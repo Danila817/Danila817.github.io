@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Моё резюме</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .photo {
+            text-align: center;
+        }
+        img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #3498db;
+            transition: transform 0.3s;
+        }
+        img:hover {
+            transform: scale(1.05);
+        }
+        .info {
+            margin: 20px 0;
+            padding: 10px;
+            border-left: 5px solid #3498db;
+            background: #f9f9f9;
+        }
+        input, button {
+            padding: 8px;
+            margin: 5px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .random-bg-btn {
+            background-color: #e67e22;
+        }
+        .random-bg-btn:hover {
+            background-color: #d35400;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Резюме</h1>
+
+    <div class="photo">
+        <img src="https://via.placeholder.com/150" alt="Фото">
+    </div>
+
+    <div class="info">
+        <p><strong>Имя:</strong> <span id="firstName">Иван</span></p>
+        <p><strong>Фамилия:</strong> <span id="lastName">Иванов</span></p>
+        <p><strong>Должность:</strong> Веб-разработчик</p>
+        <p><strong>О себе:</strong> Люблю создавать красивые сайты.</p>
+    </div>
+
+    <hr>
+
+    <h3>Изменить фамилию</h3>
+    <input type="text" id="newLastName" placeholder="Введите новую фамилию">
+    <button id="changeLastNameBtn">Изменить фамилию</button>
+
+    <br><br>
+
+    <button id="randomBgBtn" class="random-bg-btn">Случайный цвет фона</button>
+</div>
+
+<script>
+    // Изменение фамилии
+    const changeBtn = document.getElementById("changeLastNameBtn");
+    const lastNameSpan = document.getElementById("lastName");
+
+    changeBtn.addEventListener("click", function() {
+        let newName = document.getElementById("newLastName").value;
+        if (newName.trim() !== "") {
+            lastNameSpan.textContent = newName;
+        } else {
+            alert("Введите фамилию!");
+        }
+    });
+
+    // Случайный цвет фона
+    const randomBtn = document.getElementById("randomBgBtn");
+    randomBtn.addEventListener("click", function() {
+        let r = Math.floor(Math.random() * 256);
+        let g = Math.floor(Math.random() * 256);
+        let b = Math.floor(Math.random() * 256);
+        document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    });
+</script>
+</body>
+</html>
